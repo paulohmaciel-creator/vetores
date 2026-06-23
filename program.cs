@@ -4,30 +4,29 @@ class Program
 {
     static void Main()
     {
-        double[] temp = new double[6];
-        double soma = 0;
+        int[] num = new int[10];
+        int pos = 0, neg = 0, zero = 0, par = 0, impar = 0;
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Console.Write("Informe a temperatura: ");
-            temp[i] = double.Parse(Console.ReadLine());
-            soma += temp[i];
+            Console.Write("Informe um número: ");
+            num[i] = int.Parse(Console.ReadLine());
         }
 
-        double media = soma / 6;
-        int acima = 0;
-        double maior = temp[0], menor = temp[0];
-
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
-            if (temp[i] > media) acima++;
-            if (temp[i] > maior) maior = temp[i];
-            if (temp[i] < menor) menor = temp[i];
+            if (num[i] > 0) pos++;
+            else if (num[i] < 0) neg++;
+            else zero++;
+
+            if (num[i] % 2 == 0) par++;
+            else impar++;
         }
 
-        Console.WriteLine("Média: " + media);
-        Console.WriteLine("Dias acima da média: " + acima);
-        Console.WriteLine("Maior temperatura: " + maior);
-        Console.WriteLine("Menor temperatura: " + menor);
+        Console.WriteLine("Positivos: " + pos);
+        Console.WriteLine("Negativos: " + neg);
+        Console.WriteLine("Zeros: " + zero);
+        Console.WriteLine("Pares: " + par);
+        Console.WriteLine("Ímpares: " + impar);
     }
 }
