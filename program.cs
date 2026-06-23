@@ -4,24 +4,30 @@ class Program
 {
     static void Main()
     {
-        int[] idades = new int[8];
-        int menores = 0, maiores = 0;
+        double[] gastos = new double[7];
+        double total = 0, maior, menor;
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
-            Console.Write("Informe a idade do estudante: ");
-            idades[i] = int.Parse(Console.ReadLine());
+            Console.Write("Informe o gasto do dia: ");
+            gastos[i] = double.Parse(Console.ReadLine());
         }
 
-        for (int i = 0; i < 8; i++)
+        maior = menor = gastos[0];
+
+        for (int i = 0; i < 7; i++)
         {
-            if (idades[i] < 18)
-                menores++;
-            else
-                maiores++;
+            total += gastos[i];
+
+            if (gastos[i] > maior) maior = gastos[i];
+            if (gastos[i] < menor) menor = gastos[i];
         }
 
-        Console.WriteLine("Quantidade de menores de idade: " + menores);
-        Console.WriteLine("Quantidade de maiores de idade: " + maiores);
+        double media = total / 7;
+
+        Console.WriteLine("Total gasto na semana: R$ " + total);
+        Console.WriteLine("Média diária: R$ " + media);
+        Console.WriteLine("Maior gasto: R$ " + maior);
+        Console.WriteLine("Menor gasto: R$ " + menor);
     }
 }
