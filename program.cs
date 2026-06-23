@@ -4,41 +4,24 @@ class Program
 {
     static void Main()
     {
-        string[] nomes = new string[5];
-        double[] precos = new double[5];
-        double total = 0;
+        int[] votos = new int[12];
+        int pizza = 0, hamburguer = 0, pastel = 0;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 12; i++)
         {
-            Console.Write("Nome: ");
-            nomes[i] = Console.ReadLine();
-
-            Console.Write("Preço: ");
-            precos[i] = double.Parse(Console.ReadLine());
+            Console.Write("Informe o voto: ");
+            votos[i] = int.Parse(Console.ReadLine());
         }
 
-        double maior = precos[0], menor = precos[0];
-        int iMaior = 0, iMenor = 0;
-
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 12; i++)
         {
-            total += precos[i];
-
-            if (precos[i] > maior)
-            {
-                maior = precos[i];
-                iMaior = i;
-            }
-
-            if (precos[i] < menor)
-            {
-                menor = precos[i];
-                iMenor = i;
-            }
+            if (votos[i] == 1) pizza++;
+            else if (votos[i] == 2) hamburguer++;
+            else if (votos[i] == 3) pastel++;
         }
 
-        Console.WriteLine("Mais caro: " + nomes[iMaior] + " R$ " + maior);
-        Console.WriteLine("Mais barato: " + nomes[iMenor] + " R$ " + menor);
-        Console.WriteLine("Total: R$ " + total);
+        Console.WriteLine("Pizza: " + pizza);
+        Console.WriteLine("Hambúrguer: " + hamburguer);
+        Console.WriteLine("Pastel: " + pastel);
     }
 }
