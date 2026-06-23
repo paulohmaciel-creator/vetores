@@ -4,28 +4,30 @@ class Program
 {
     static void Main()
     {
-        double[] horas = new double[7];
-        double total = 0;
-        int meta = 0, naoMeta = 0;
+        double[] temp = new double[6];
+        double soma = 0;
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
-            Console.Write("Informe as horas estudadas no dia: ");
-            horas[i] = double.Parse(Console.ReadLine());
+            Console.Write("Informe a temperatura: ");
+            temp[i] = double.Parse(Console.ReadLine());
+            soma += temp[i];
         }
 
-        for (int i = 0; i < 7; i++)
-        {
-            total += horas[i];
+        double media = soma / 6;
+        int acima = 0;
+        double maior = temp[0], menor = temp[0];
 
-            if (horas[i] >= 2)
-                meta++;
-            else
-                naoMeta++;
+        for (int i = 0; i < 6; i++)
+        {
+            if (temp[i] > media) acima++;
+            if (temp[i] > maior) maior = temp[i];
+            if (temp[i] < menor) menor = temp[i];
         }
 
-        Console.WriteLine("Total de horas: " + total);
-        Console.WriteLine("Dias com meta atingida: " + meta);
-        Console.WriteLine("Dias sem meta: " + naoMeta);
+        Console.WriteLine("Média: " + media);
+        Console.WriteLine("Dias acima da média: " + acima);
+        Console.WriteLine("Maior temperatura: " + maior);
+        Console.WriteLine("Menor temperatura: " + menor);
     }
 }
