@@ -1,38 +1,27 @@
 ﻿using System;
-using System.Diagnostics;
 
-[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 class Program
 {
     static void Main()
     {
-        double[] notas = new double[5];
-        double soma = 0;
-        double media;
+        int[] idades = new int[8];
+        int menores = 0, maiores = 0;
 
-        // Entrada de dados
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
-            Console.Write("Informe a nota: ");
-            notas[i] = double.Parse(Console.ReadLine());
+            Console.Write("Informe a idade do estudante: ");
+            idades[i] = int.Parse(Console.ReadLine());
         }
 
-        // Processamento (soma)
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
-            soma += notas[i];
+            if (idades[i] < 18)
+                menores++;
+            else
+                maiores++;
         }
 
-        // Cálculo da média
-        media = soma / 5;
-
-        // Saída
-        Console.WriteLine("Soma das notas: " + soma);
-        Console.WriteLine("Média final: " + media);
-    }
-
-    private string GetDebuggerDisplay()
-    {
-        return ToString();
+        Console.WriteLine("Quantidade de menores de idade: " + menores);
+        Console.WriteLine("Quantidade de maiores de idade: " + maiores);
     }
 }
