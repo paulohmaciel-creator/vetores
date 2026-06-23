@@ -4,29 +4,41 @@ class Program
 {
     static void Main()
     {
-        int[] num = new int[10];
-        int pos = 0, neg = 0, zero = 0, par = 0, impar = 0;
+        string[] nomes = new string[5];
+        double[] precos = new double[5];
+        double total = 0;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Console.Write("Informe um número: ");
-            num[i] = int.Parse(Console.ReadLine());
+            Console.Write("Nome: ");
+            nomes[i] = Console.ReadLine();
+
+            Console.Write("Preço: ");
+            precos[i] = double.Parse(Console.ReadLine());
         }
 
-        for (int i = 0; i < 10; i++)
-        {
-            if (num[i] > 0) pos++;
-            else if (num[i] < 0) neg++;
-            else zero++;
+        double maior = precos[0], menor = precos[0];
+        int iMaior = 0, iMenor = 0;
 
-            if (num[i] % 2 == 0) par++;
-            else impar++;
+        for (int i = 0; i < 5; i++)
+        {
+            total += precos[i];
+
+            if (precos[i] > maior)
+            {
+                maior = precos[i];
+                iMaior = i;
+            }
+
+            if (precos[i] < menor)
+            {
+                menor = precos[i];
+                iMenor = i;
+            }
         }
 
-        Console.WriteLine("Positivos: " + pos);
-        Console.WriteLine("Negativos: " + neg);
-        Console.WriteLine("Zeros: " + zero);
-        Console.WriteLine("Pares: " + par);
-        Console.WriteLine("Ímpares: " + impar);
+        Console.WriteLine("Mais caro: " + nomes[iMaior] + " R$ " + maior);
+        Console.WriteLine("Mais barato: " + nomes[iMenor] + " R$ " + menor);
+        Console.WriteLine("Total: R$ " + total);
     }
 }
